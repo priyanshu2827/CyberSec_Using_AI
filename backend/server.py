@@ -30,7 +30,7 @@ api = APIRouter(prefix="/api")
 class ScenarioCreate(BaseModel):
     name: str
     description: Optional[str] = None
-    tactics: List[str] = Field(default_factory=list, description="MITRE ATT&amp;CK tactics list")
+    tactics: List[str] = Field(default_factory=list, description="MITRE ATT&CK tactics list")
     techniques: List[str] = Field(default_factory=list)
     severity: str = Field(default="medium")
 
