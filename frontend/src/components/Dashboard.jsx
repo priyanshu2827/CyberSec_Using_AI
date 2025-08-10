@@ -197,18 +197,19 @@ export default function Dashboard({ onQuickRunComplete }) {
             <div className="thead"><div>Device</div><div>Scenario</div><div>Risk</div><div>When</div></div>
             <div className="tbody">
               {sims.slice(0, 8).map((s, i) => (
-                <a key={i} className="trow" href={`/history#${s.id}`}> 
+                <div key={i} className="trow" onClick={() => setSelected(s)} style={{cursor:'pointer'}}> 
                   <div>{s.device_id}</div>
                   <div className="muted small">{s.scenario_id}</div>
                   <div><span className="pill">{Number(s.risk_score).toFixed(1)}</span></div>
                   <div className="muted small">{new Date(s.started_at).toLocaleString()}</div>
-                </a>
+                </div>
               ))}
             </div>
           </div>
         </div>
       </div>
 
+      {selected && <SimulationDetails sim={selected} onClose={() => setSelected(null)} />}
       {toast && <div className="toast">{toast}</div>}
     </div>
   );
