@@ -17,6 +17,7 @@ export default function Dashboard({ onQuickRunComplete }) {
   const [sims, setSims] = useState([]);
   const [loading, setLoading] = useState(false);
   const [toast, setToast] = useState("");
+  const [selected, setSelected] = useState(null);
 
   const load = async () => {
     const [sc, si] = await Promise.all([
