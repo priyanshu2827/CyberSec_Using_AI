@@ -117,7 +117,7 @@ def analyze_telemetry(telemetry: Telemetry) -> Dict[str, Any]:
             # Simulate block
             blocked.append({"action": "kill_process", "pid": p.get("pid"), "reason": "script_execution"})
             susp_proc += 1
-        if int(p.get("network_connections", 0)) &gt; 10:
+        if int(p.get("network_connections", 0)) > 10:
             indicators.append(Indicator(type="high_network_activity", severity="medium",
                                         description=f"High network activity {name}",
                                         meta={"count": p.get("network_connections")}))
