@@ -1,7 +1,8 @@
 import { useEffect, useMemo, useState } from "react";
 import "./App.css";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Link, useLocation } from "react-router-dom";
 import axios from "axios";
+import Dashboard from "./components/Dashboard";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
@@ -14,20 +15,19 @@ function useApi() {
   return api;
 }
 
-const Home = () => {
+const Nav = () => {
+  const { pathname } = useLocation();
   return (
-    <div>
-      <header className="App-header">
-        <a className="App-link" href="https://emergent.sh" target="_blank" rel="noopener noreferrer">
-          <img alt="emergent" src="https://avatars.githubusercontent.com/in/1201222?s=120&u=2686cf91179bbafbc7a71bfbc43004cf9ae1acea&v=4" />
-        </a>
-        <p className="mt-5">AI-driven Cybersecurity Simulator</p>
-        <div className="mt-4">
-          <Link to="/scenarios" className="btn">Scenario Designer</Link>
-          <Link to="/simulate" className="btn ml">Run Simulation</Link>
-          <Link to="/history" className="btn ml">History</Link>
+    <div className="nav">
+      <div className="nav-inner">
+        <Link to="/" className="brand">AI Cyber Simulator</Link>
+        <div className="nav-links">
+          <Link className={pathname==="/"?"active":""} to="/">Dashboard</Link>
+          <Link className={pathname==="/scenarios"?"active":""} to="/scenarios">Scenarios</Link>
+          <Link className={pathname==="/simulate"?"active":""} to="/simulate">Simulate</Link>
+          <Link className={pathname==="/history"?"active":""} to="/history">History</Link>
         </div>
-      </header>
+      </div>
     </div>
   );
 };
@@ -239,8 +239,9 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
+        <Nav />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Dashboard />} />
           <Route path="/scenarios" element={<ScenarioDesigner />} />
           <Route path="/simulate" element={<Simulate />} />
           <Route path="/history" element={<History />} />
