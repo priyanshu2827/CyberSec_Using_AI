@@ -130,13 +130,13 @@ def analyze_telemetry(telemetry: Telemetry) -> Dict[str, Any]:
     for log in telemetry.file_access_logs:
         by_pid.setdefault(log.get("process_id"), []).append(log)
     for pid, logs in by_pid.items():
-        if len(logs) &gt; 100:
+        if len(logs) > 100:
             file_types = set()
             for l in logs:
                 path = str(l.get("file_path", ""))
                 if "." in path:
                     file_types.add(path.split(".")[-1].lower())
-            if len(file_types) &gt; 5:
+            if len(file_types) > 5:
                 indicators.append(Indicator(type="mass_file_access", severity="critical",
                                             description="Mass multi-type file access (ransomware-like)",
                                             meta={"pid": pid, "count": len(logs), "types": list(file_types)}))
