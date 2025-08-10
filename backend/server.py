@@ -92,7 +92,7 @@ def analyze_telemetry(telemetry: Telemetry) -> Dict[str, Any]:
                                         meta={"port": port}))
             timeline.append({"ts": datetime.utcnow().isoformat(), "event": "net_admin_port", "port": port})
             susp_net += 1
-        if bytes_tx &gt; 100_000_000:
+        if bytes_tx > 100_000_000:
             indicators.append(Indicator(type="high_volume_transfer", severity="high",
                                         description=f"Large transfer {bytes_tx} bytes to {conn.get('destination_ip')}",
                                         meta={"bytes": bytes_tx}))
