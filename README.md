@@ -8,6 +8,9 @@ A modern, interactive security simulator with an explainable rule engine, dashbo
 - Database: MongoDB via MONGO_URL from backend/.env
 - Runtime: Supervisor (backend at 0.0.0.0:8001, frontend 3000). Kubernetes ingress routes /api → backend; others → frontend
 
+## To run this 
+ - https://cyber-defense-ai.preview.emergentagent.com/
+
 ## Key Features
 - Dashboard (Home + /dashboard)
   - Live tiles, risk gauge, risk distribution, recent activity
