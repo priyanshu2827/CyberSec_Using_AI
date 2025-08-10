@@ -3,6 +3,7 @@ import "./App.css";
 import { BrowserRouter, Routes, Route, Link, useLocation } from "react-router-dom";
 import axios from "axios";
 import Dashboard from "./components/Dashboard";
+import Landing from "./components/Landing";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
@@ -22,7 +23,8 @@ const Nav = () => {
       <div className="nav-inner">
         <Link to="/" className="brand">AI Cyber Simulator</Link>
         <div className="nav-links">
-          <Link className={pathname==="/"?"active":""} to="/">Dashboard</Link>
+          <Link className={pathname==="/"?"active":""} to="/">Home</Link>
+          <Link className={pathname.startsWith("/dashboard")?"active":""} to="/dashboard">Dashboard</Link>
           <Link className={pathname==="/scenarios"?"active":""} to="/scenarios">Scenarios</Link>
           <Link className={pathname==="/simulate"?"active":""} to="/simulate">Simulate</Link>
           <Link className={pathname==="/history"?"active":""} to="/history">History</Link>
@@ -241,7 +243,8 @@ function App() {
       <BrowserRouter>
         <Nav />
         <Routes>
-          <Route path="/" element={<Dashboard />} />
+          <Route path="/" element={<Landing />} />
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/scenarios" element={<ScenarioDesigner />} />
           <Route path="/simulate" element={<Simulate />} />
           <Route path="/history" element={<History />} />

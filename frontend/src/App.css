@@ -1,12 +1,10 @@
+/* Global */
 .App { text-align: center; }
-/* NAV */
 .nav { position: sticky; top: 0; z-index: 20; background: rgba(9,11,16,0.8); backdrop-filter: blur(10px); border-bottom: 1px solid #1f2633; }
 .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 10px 16px; }
 .brand { color: #e5e7eb; text-decoration: none; font-weight: 700; }
 .nav-links a { color: #c7d2fe; text-decoration: none; margin-left: 16px; padding: 6px 10px; border-radius: 6px; }
 .nav-links a.active, .nav-links a:hover { background: #111827; }
-
-/* PAGES */
 .page { max-width: 1200px; margin: 20px auto; text-align: left; padding: 0 12px; }
 .row { display: flex; gap: 12px; align-items: center; }
 .row.between { justify-content: space-between; }
@@ -26,35 +24,37 @@ textarea { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "
 .pill.risk { background: #3f1d2b; border-color: #7f1d1d; }
 .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
 
-/* HERO */
+/* Landing */
+.landing { text-align: left; }
+.hero2 { background: url('https://images.unsplash.com/photo-1523961131990-5ea7c61b2107?q=85') center/cover no-repeat; border-radius: 16px; margin: 20px auto; max-width: 1200px; border: 1px solid #2b2f3a; }
+.hero2-inner { padding: 48px 32px; background: linear-gradient(180deg, rgba(10,12,18,0.8), rgba(10,12,18,0.6)); border-radius: 16px; }
+.title { margin: 0; font-size: 36px; }
+.lead { color: #cbd5e1; max-width: 800px; }
+.glow { text-shadow: 0 0 20px rgba(59,130,246,0.35); }
+.landing-stats { display: flex; gap: 14px; margin-top: 16px; }
+.stat2 { background: rgba(0,0,0,0.35); border: 1px solid #1f2937; padding: 10px 14px; border-radius: 10px; color: #e5e7eb; display: flex; align-items: center; gap: 10px; }
+.stat2-num { width: 12px; height: 12px; border-radius: 50%; background: #ef4444; box-shadow: 0 0 10px rgba(239,68,68,0.6); }
+.stat2-num.ok { background: #22c55e; box-shadow: 0 0 10px rgba(34,197,94,0.6); }
+.stat2-label { font-size: 14px; }
+.features .feat { min-height: 160px; }
+
+/* Dashboard styles (existing) */
 .hero { background: url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=85') center/cover no-repeat; border-radius: 12px; padding: 32px; border: 1px solid #2b2f3a; }
 .dark-gradient { background-blend-mode: multiply; background-color: rgba(10,12,18,0.7); }
-.title { margin: 0; font-size: 28px; }
-.glow { text-shadow: 0 0 20px rgba(59,130,246,0.35); }
-
-/* STATS */
 .stat { text-align: center; background: linear-gradient(180deg, rgba(23,26,35,1), rgba(14,16,22,1)); }
 .stat-label { color: #9ca3af; font-size: 12px; }
 .stat-value { font-size: 28px; font-weight: 700; }
-
-/* GAUGE */
 .gauge { width: 140px; height: 140px; border-radius: 50%; position: relative; display: grid; place-items: center; box-shadow: inset 0 0 20px rgba(0,0,0,0.6); border: 1px solid #2b2f3a; }
 .gauge-inner { width: 110px; height: 110px; background: #0b0d12; border-radius: 50%; display: grid; place-items: center; font-size: 28px; font-weight: 700; border: 1px solid #1e293b; }
-
-/* BARS */
 .bars { display: grid; gap: 10px; }
 .bar-row { display: grid; grid-template-columns: 60px 1fr 30px; gap: 8px; align-items: center; }
 .bar-label { color: #9ca3af; font-size: 12px; }
 .bar-track { height: 10px; background: #0f172a; border: 1px solid #1f2937; border-radius: 999px; overflow: hidden; }
 .bar-fill { height: 100%; background: linear-gradient(90deg, #22c55e, #eab308, #ef4444); }
-
-/* TIMELINE */
 .timeline { max-height: 300px; overflow: auto; }
 .timeline-item { display: grid; grid-template-columns: 120px 1fr; gap: 10px; padding: 6px 0; border-bottom: 1px dashed #2b2f3a; }
 .time { color: #9ca3af; font-size: 12px; }
 .evt { font-weight: 600; }
-
-/* TABLE */
 .table { width: 100%; }
 .thead, .trow { display: grid; grid-template-columns: 1.2fr 2fr 0.5fr 1.2fr; gap: 12px; }
 .thead { color: #9ca3af; font-size: 12px; margin-bottom: 6px; }
@@ -62,18 +62,7 @@ textarea { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "
 .trow:hover { background: #0f172a; }
 .tbody { display: grid; gap: 4px; }
 
-/* MODAL */
+/* Modal & Toast retained */
 .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); display: grid; place-items: center; z-index: 50; }
 .modal { width: min(1000px, 92vw); max-height: 90vh; overflow: auto; background: #0b0d12; border: 1px solid #2b2f3a; border-radius: 12px; padding: 16px; }
-
-/* EXISTING */
-.indicator { border: 1px solid #2b2f3a; padding: 8px; border-radius: 8px; margin-bottom: 8px; }
-.indicator.low { border-color: #14532d; }
-.indicator.medium { border-color: #1e3a8a; }
-.indicator.high { border-color: #7c2d12; }
-.indicator.critical { border-color: #7f1d1d; }
-.muted { color: #9ca3af; }
-.small { font-size: 12px; }
-
-/* TOAST */
 .toast { position: fixed; bottom: 20px; right: 20px; background: #111827; border: 1px solid #1f2937; color: #e5e7eb; padding: 10px 14px; border-radius: 8px; box-shadow: 0 8px 30px rgba(0,0,0,0.3); z-index: 60; }
