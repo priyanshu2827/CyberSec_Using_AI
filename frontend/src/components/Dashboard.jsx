@@ -9,6 +9,8 @@ const bins = [
   { label: "8-10", min: 8, max: 10.1 },
 ];
 
+import SimulationDetails from "./SimulationDetails";
+
 export default function Dashboard({ onQuickRunComplete }) {
   const api = useMemo(() => getApi(), []);
   const [scenarios, setScenarios] = useState([]);
